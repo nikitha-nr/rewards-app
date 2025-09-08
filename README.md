@@ -1,7 +1,5 @@
 # Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
 A simple React application to calculate and display reward points earned by customers over a rolling 3-month window.
 
 Reward Rules:
@@ -14,6 +12,31 @@ Reward Rules:
 
 </ul>
 
+Features:
+
+<ul>
+<li>View reward points per customer by month and total.</li>
+
+<li>Filter by a specific customer or view all customers combined.</li?>
+
+<li>Clean, simple UI </li>
+
+<li>Simulated async API (setTimeout) — no backend required.</li>
+
+<li>Unit tests for reward logic, date helpers, and hook (useRewardsData).</li>
+</ul>
+
+Tech Stack:
+
+<ul>
+<li>React </li>
+<li>JavaScript </li>
+
+<li>React Hooks (useState, useEffect)</li>
+
+<li>Jest + React Testing Library for unit tests</li>
+</ul>
+
 ## Available Scripts
 
 In the project directory, you can run:
@@ -23,60 +46,49 @@ In the project directory, you can run:
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
 
 ### `npm test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+To run tests
 
-### `npm run build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Simulated Endpoints:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+The API is simulated with async functions in src/api/rewardsApi.js:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+<ul>
+<li>getCustomers() → list of customers</li>
 
-### `npm run eject`
+<li>getTransactions(customerId?) → list of transactions (filtered if customerId passed)</li>
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+<li>getRewards() → combined customers + transactions</li>
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+</ul>
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+Dataset includes examples that cover all edge cases:
+<ul>
+<li>$40 → 0 pts</li>
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+<li>$100 → 50 pts</li>
 
-## Learn More
+<li>$120 → 90 pts</li>
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+<li>$75 → 25 pts</li>
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+</ul>
 
-### Code Splitting
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+Tests Included:
 
-### Analyzing the Bundle Size
+<ul>
+<li>pointsCalculator.test.js → verifies reward rules (<=50, 100=50, 120=90) and monthly aggregation.</li>
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+<li>dateUtils.test.js → verifies rolling 3-month window and formatting (Jul 2025).</li>
 
-### Making a Progressive Web App
+<li>useRewardsData.test.js → mocks API, loads data, and verifies totals.</li>
+</ul>
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
 
-### Advanced Configuration
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
 
-### Deployment
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
