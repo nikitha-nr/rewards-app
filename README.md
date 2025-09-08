@@ -2,6 +2,18 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+A simple React application to calculate and display reward points earned by customers over a rolling 3-month window.
+
+Reward Rules:
+<ul>
+<li>$50 or less → 0 points</li>
+
+<li>$50–$100 → 1 point per dollar over $50 (max 50 at $100)</li>
+
+<li>Over $100 → 2 points per dollar over $100</li>
+
+</ul>
+
 ## Available Scripts
 
 In the project directory, you can run:
